@@ -8,7 +8,7 @@ export default class Login extends Component
     }
     handleForm = (e) => {   //arrow function
          e.preventDefault();
-         
+         this.props.history.push("/profile")
        }
     handleInput =(e) => {
         e.preventDefault();
