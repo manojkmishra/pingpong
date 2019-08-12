@@ -8,9 +8,11 @@ import Login from './Login';
 function App() {
   return (
     <div >
-        <h1 className="bg-purple-500">  Tailwind css working </h1>
+        <h1 className="bg-purple-500">  Tailwind css - Strip outside router </h1>
         <Router>
+          <div className="bg-gray-300 h-screen">
            <Route path="/login" component={Login} />
+           </div>
         </Router>
     </div>
   );
