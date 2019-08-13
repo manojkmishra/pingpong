@@ -8,6 +8,12 @@ export default class Login extends Component
     }
     handleForm = (e) => {   //arrow function
          e.preventDefault();
+
+         const data={email:this.state.email, password:this.state.password} ;
+         fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
+         .then(res=>res.json())
+         .then(res=>console.log('login res=',res))
+
          this.props.history.push("/profile")
        }
     handleInput =(e) => {
