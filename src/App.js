@@ -7,6 +7,7 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import GuestRoute from './components/GuestRoute' ;
+import AuthRoute from './components/AuthRoute' ;
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         <Router>
           <div className="bg-gray-300 h-screen">
              <GuestRoute path="/login" component={Login} />
-             <Route path="/profile" component={Profile} />
+             <AuthRoute path="/profile" component={Profile} />
              <GuestRoute path="/register" component={Register} />
            </div>
         </Router>
