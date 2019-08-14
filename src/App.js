@@ -5,6 +5,7 @@ import "./css/tailwind.css" ;
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from './Login';
 import Profile from './Profile';
+import Register from './Register';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <div className="bg-gray-300 h-screen">
              <Route path="/login" component={Login} />
              <Route path="/profile" component={Profile} />
+             <Route path="/register" component={Register} />
            </div>
         </Router>
     </div>
