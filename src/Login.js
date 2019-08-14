@@ -1,20 +1,26 @@
 import React , {Component} from "react";
+import axios from 'axios';
 
 export default class Login extends Component 
 {   
     constructor(props){
-        super(props);
-        this.state={email:'',password:'',errors:{}}
-    }
+             super(props);
+             this.state={email:'',password:'',errors:{}}
+          }
     handleForm = (e) => {   //arrow function
          e.preventDefault();
 
          const data={email:this.state.email, password:this.state.password} ;
-         fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
-         .then(res=>res.json())
+        // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
+         axios.post("http://localhost:8000/api/auth/login",data)
          .then(res=>console.log('login res=',res))
+         .catch(err=>{console.log('catch e.response=',err.response); 
+                      console.log('this.state=',this.state) ;
+                      this.setState({errors:err.response.data}); 
+                      console.log('this.state=',this.state)
+                    });
 
-         this.props.history.push("/profile")
+        // this.props.history.push("/profile")
        }
     handleInput =(e) => {
         e.preventDefault();
