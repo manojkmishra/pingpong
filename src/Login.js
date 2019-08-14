@@ -13,8 +13,8 @@ export default class Login extends Component
          const data={email:this.state.email, password:this.state.password} ;
         // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
          axios.post("http://localhost:8000/api/auth/login",data)
-         .then(res=>console.log('login res=',res))
-         .catch(err=>{console.log('catch e.response=',err.response); 
+         .then(res=>console.log('login api res=',res))
+         .catch(err=>{console.log('login err.response=',err.response); 
                       console.log('this.state=',this.state) ;
                       this.setState({errors:err.response.data}); 
                       console.log('this.state=',this.state)
