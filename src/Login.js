@@ -1,5 +1,6 @@
 import React , {Component} from "react";
 import axios from 'axios';
+import cookie from 'js-cookie';
 
 export default class Login extends Component 
 {   
@@ -13,7 +14,11 @@ export default class Login extends Component
          const data={email:this.state.email, password:this.state.password} ;
         // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
          axios.post("http://localhost:8000/api/auth/login",data)
-         .then(res=>console.log('login api res=',res))
+         .then(res=> {  console.log('login api res=',res)
+                        cookie.set("token",res.data.access_token);
+                        cookie.set("user",res.data.user);
+                        this.props.history.push("/profile")
+                      })
          .catch(err=>{console.log('login err.response=',err.response); 
                       console.log('this.state=',this.state) ;
                       this.setState({errors:err.response.data}); 
@@ -27,9 +32,9 @@ export default class Login extends Component
         const name= e.target.name;
         const value=e.target.value;
         this.setState({[name]:value});  //dynamic binding
-        console.log('e',e); 
-        console.log('state',this.state); 
-        console.log('props',this.props); 
+      //  console.log('e',e); 
+      //  console.log('state',this.state); 
+      //  console.log('props',this.props); 
        // console.log(e.target.value);  //target is email text field
     }
 
