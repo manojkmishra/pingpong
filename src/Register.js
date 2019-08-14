@@ -1,5 +1,6 @@
 import React , {Component} from "react";
 import axios from 'axios';
+import cookie from 'js-cookie';
 
 export default class Register extends Component 
 {    constructor(props){
@@ -12,13 +13,17 @@ export default class Register extends Component
     // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
      console.log('data before register',data);
      axios.post("http://localhost:8000/api/auth/register",data)
-          .then(res=>console.log('register api res=',res))
+          .then(res=>{ console.log('register api res=',res);
+                       cookie.set("token",res.data.access_token);
+                       cookie.set("user",res.data.user);
+                       this.props.history.push("/profile")
+                     })
           .catch(err=>{console.log('reg err.response=',err.response); 
              console.log('this.state=',this.state) ;
              this.setState({errors:err.response.data}); 
              console.log('this.state=',this.state)
            });
-     // this.props.history.push("/profile")
+    
     }
     handleInput =(e) => {
        e.preventDefault();
