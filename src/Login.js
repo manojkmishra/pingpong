@@ -42,6 +42,7 @@ export default class Login extends Component
                  <div className="w-1/3"></div>  {/* this one third page column is just for left gap  */}
                  <div className="w-1/3 mt-10 p-4 bg-yellow-300">   {/* mt- margin top, p-padding  */}
                   <form className="border border-gray-500" onSubmit={this.handleForm}>
+                   {this.state.errors.error ? <p className="text-red-500 text-sm" > { this.state.errors.error } </p> : "" }
                     <div className="p-4">  {/* tcontainer for below input, padding=4  */}
                       <h1 className="text-lg border-b border-gray-400">Login Form</h1>  {/*border-b =  border of bottom  */}
                       <div className="mt-4"> 
