@@ -1,8 +1,10 @@
 import React , {Component} from "react";
 import axios from 'axios';
 import cookie from 'js-cookie';
+import { connect } from 'react-redux';
 
-export default class Login extends Component 
+
+ class Login extends Component 
 {   
     constructor(props){
              super(props);
@@ -14,9 +16,15 @@ export default class Login extends Component
          const data={email:this.state.email, password:this.state.password} ;
         // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
          axios.post("http://localhost:8000/api/auth/login",data)
-         .then(res=> {  console.log('login api res=',res)
+         .then(res=> {  console.log('login props=',this.props)
+                        console.log('login state=', this.state)
+                      
+                        console.log('login api res=',res)
                         cookie.set("token",res.data.access_token);
-                        cookie.set("user",res.data.user);
+                       // cookie.set("user",res.data.user);    //we want user in redux and token in cookie now
+                        this.props.setLogin(res.data.user); //send user inside props
+                        console.log('login props=',this.props)
+                        console.log('login state=', this.state)
                         this.props.history.push("/profile")
                       })
          .catch(err=>{console.log('login err.response=',err.response); 
@@ -70,4 +78,11 @@ export default class Login extends Component
            );
     }
 }
+const mapDispatchToProps = dispatch=>{  console.log('mapDispatchToProps from login');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
+  return {setLogin: user=>dispatch({type:"SET_LOGIN", payload: user})}
+}
+export default connect (null,mapDispatchToProps)(Login);    //1-connect login page and two arguments
+//first arg null=map state to props
+//sec = mapdespatchtoprops
 
+//3.  this.props.setLogin(res.data.user);   ----used above
