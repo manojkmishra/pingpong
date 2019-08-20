@@ -19,7 +19,7 @@ if(token)
                 cookie.remove('token');
                 console.log('index.js--err in token, so removed token from cookie',cookie);
                }else{
-                   if( decoded.iss !='http://localhost:8000/api/auth/login'){
+                   if( decoded.iss !=='http://localhost:8000/api/auth/login'){
                     token=null;
                     cookie.remove('token');
                     console.log('index.js--issues is not same, so removed token from cookie',cookie);

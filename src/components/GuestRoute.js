@@ -18,7 +18,7 @@ const GuestRoute = ({ component: Component, ...rest }) => {
   };
 
   //export default GuestRoute;
-  const mapStateToProps = state=>{  console.log('mapDispatchToProps from login');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
+  const mapStateToProps = state=>{  console.log('GuestRoute.js--mapStateToProps--loggedIn: state.auth.loggedIn ');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
   return {loggedIn: state.auth.loggedIn}
 }
 export default connect (mapStateToProps)(GuestRoute);    //1-connect login page and two arguments

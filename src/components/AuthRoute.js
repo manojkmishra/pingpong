@@ -18,7 +18,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   };
 
  // export default AuthRoute;
-  const mapStateToProps = state=>{  console.log('mapDispatchToProps from login');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
+  const mapStateToProps = state=>{  console.log('AuthRoute.js--mapStateToProps- loggedIn: state.auth.loggedIn ');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
   return {loggedIn: state.auth.loggedIn}
 }
 export default connect (mapStateToProps)(AuthRoute);    //1-connect login page and two arguments

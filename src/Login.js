@@ -16,21 +16,21 @@ import { connect } from 'react-redux';
          const data={email:this.state.email, password:this.state.password} ;
         // fetch("http://localhost:8000/api/auth/login",{ method:"post", body: JSON.stringify(data), headers:{"Content-Type":"application/json"} })
          axios.post("http://localhost:8000/api/auth/login",data)
-         .then(res=> {  console.log('login props=',this.props)
-                        console.log('login state=', this.state)
+         .then(res=> {  //console.log('login props=',this.props)
+                       // console.log('login state=', this.state)
                       
                         console.log('login api res=',res)
                         cookie.set("token",res.data.access_token);
                        // cookie.set("user",res.data.user);    //we want user in redux and token in cookie now
                         this.props.setLogin(res.data.user); //send user inside props
-                        console.log('login props=',this.props)
-                        console.log('login state=', this.state)
+                        console.log('login.js--after auth api-- props=',this.props)
+                        console.log('login.js--after auth api-- state=', this.state)
                         this.props.history.push("/profile")
                       })
-         .catch(err=>{console.log('login err.response=',err.response); 
-                      console.log('this.state=',this.state) ;
+         .catch(err=>{console.log('login.js login api err.response=',err.response); 
+                      console.log('login.api after err catch this.state=',this.state) ;
                       this.setState({errors:err.response.data}); 
-                      console.log('this.state=',this.state)
+                      console.log('login.api after setstate this.state=',this.state)
                     });
 
         // this.props.history.push("/profile")
@@ -47,14 +47,15 @@ import { connect } from 'react-redux';
     }
 
     render()
-    {         
+    {         console.log('inside Login page render before return this.state=',this.state)  ;
+    console.log('inside Login page render before return this.props=',this.state)  ;
         return(
              <div>
                <h1> Login Page</h1>
                <div className="flex">
                  <div className="w-1/3"></div>  {/* this one third page column is just for left gap  */}
                  <div className="w-1/3 mt-10 p-4 bg-yellow-300">   {/* mt- margin top, p-padding  */}
-                  <form className="border border-gray-500" onSubmit={this.handleForm}>
+                  <form className="border border-gray-500" onSubmit={this.handleForm }>
                    {this.state.errors.error ? <p className="text-red-500 text-sm" > { this.state.errors.error } </p> : "" }
                     <div className="p-4">  {/* tcontainer for below input, padding=4  */}
                       <h1 className="text-lg border-b border-gray-400">Login Form</h1>  {/*border-b =  border of bottom  */}
@@ -78,7 +79,7 @@ import { connect } from 'react-redux';
            );
     }
 }
-const mapDispatchToProps = dispatch=>{  console.log('mapDispatchToProps from login');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
+const mapDispatchToProps = dispatch=>{  console.log('Login.js--mapDispatchToProps- SET_LOGIN ');   //2- dispatch action name=setLogin, type(mutation=SET_LOGIN) and values=user
   return {setLogin: user=>dispatch({type:"SET_LOGIN", payload: user})}
 }
 export default connect (null,mapDispatchToProps)(Login);    //1-connect login page and two arguments
