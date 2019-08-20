@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Redirect, } from "react-router-dom";
-import cookie from 'js-cookie';
+//import cookie from 'js-cookie';
 import { connect } from 'react-redux';
 
 const GuestRoute = ({ component: Component, ...rest }) => {
-    const token = cookie.get('token')  //not required anymore
-    console.log('inside guestroute.js token=',token);
+  console.log('inside GuestRoute  ...rest=',{...rest})
+  //  const token = cookie.get('token')  //not required anymore
+  //  console.log('inside guestroute.js token=',token);
   
     return (  
       <Route  {...rest}

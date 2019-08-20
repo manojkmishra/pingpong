@@ -2,12 +2,13 @@ import React from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import "./css/tailwind.css" ;
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import GuestRoute from './components/GuestRoute' ;
 import AuthRoute from './components/AuthRoute' ;
+
 
 function App() {
 

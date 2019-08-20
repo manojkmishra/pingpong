@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Redirect, } from "react-router-dom";
-import cookie from 'js-cookie';
+//import cookie from 'js-cookie';
 import { connect } from 'react-redux';
 
 const AuthRoute = ({ component: Component, ...rest }) => {
-    console.log('AuthRoute  ...rest=',{...rest})
-    const token = cookie.get('token')
-    console.log('inside authroute.js token=',token);
+    console.log('inside AuthRoute  ...rest=',{...rest})
+   // const token = cookie.get('token')
+   // console.log('inside authroute.js token=',token);
   
     return (  
       <Route  {...rest}
