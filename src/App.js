@@ -8,6 +8,7 @@ import Profile from './Profile';
 import Register from './Register';
 import GuestRoute from './components/GuestRoute' ;
 import AuthRoute from './components/AuthRoute' ;
+import Layout from './components/Layout' ;
 
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
     <div >
         <h1 className="bg-purple-500">  Tailwind css - Strip outside router </h1>
         <Router>
-          <div className="bg-gray-300 h-screen">
+          <Layout>
+          <div className="bg-gray-500 h-screen">
              <GuestRoute path="/login" component={Login} />
              <AuthRoute path="/profile" component={Profile} />
              <GuestRoute path="/register" component={Register} />
            </div>
+           </Layout>
         </Router>
     </div>
   );
