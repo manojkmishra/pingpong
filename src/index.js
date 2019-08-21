@@ -15,7 +15,7 @@ let token = cookie.get("token")
 if(token)
 {   //jwt.verify(token, jwt_secret, function(err, decoded) 
     jwt.verify(token, jwt_secret, (err, decoded)  => {   //arrow function in place of above 
-       if(err){token=null;
+       if(err){ token=null;
                 cookie.remove('token');
                 console.log('index.js--err in token, so removed token from cookie',cookie);
                }else{

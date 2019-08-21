@@ -47,8 +47,8 @@ import { connect } from 'react-redux';
     }
 
     render()
-    {         console.log('inside Login page render before return this.state=',this.state)  ;
-    console.log('inside Login page render before return this.props=',this.state)  ;
+    {        // console.log('inside Login page render before return this.state=',this.state)  ;
+            //  console.log('inside Login page render before return this.props=',this.state)  ;
         return(
              <div>
                <h1> Login Page</h1>
