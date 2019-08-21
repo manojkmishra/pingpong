@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 function Layout(props) 
 {
   console.log('inside layout props= ', props);
- 
-    return (  
+     return (  
      <div>
          <nav className="flex"> <h1 className="w-3/4 py-4 mx-10">Layout Page</h1>  {/*w-width, py padding on y axis, mx-margin on x axis  */}
             <div className="w-1/4 justify-end"> 
@@ -17,7 +16,8 @@ function Layout(props)
                   <Link className="m-3 py-1 px-2 bg-orange-500 text-white rounded inline-block" to="/login"> Login </Link> {/*py padding on y axis, mx-margin on x axis  */}
                   <Link className="m-3 py-1 px-2 bg-purple-700 text-white rounded inline-block"  to="/register" >Register </Link>
               </Fragment>
-            ) :null }
+            ) :  <Link className="m-3 py-1 px-2 bg-purple-700 text-white rounded inline-block"  to="/logout" >Logout </Link>
+             }
 
             </div>
           </nav>
